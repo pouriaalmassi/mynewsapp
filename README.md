@@ -1,3 +1,7 @@
+# mynewsapp
+
+A news iOS application and API service.
+
 ## News API Service
 
 A Node.js/TypeScript API that wraps the News API (https://newsapi.org/) to provide news headlines and search functionality with Bearer token authentication.
@@ -13,51 +17,49 @@ A Node.js/TypeScript API that wraps the News API (https://newsapi.org/) to provi
 
 ### Project Structure
 
-```
-apps/ios/
-├── mynewsapp/
-│   ├── mynewsappApp.swift            # App entry point, configures root view with dependencies
-│   ├── Info.plist                     # App configuration including API key reference
-│   ├── Models/
-│   │   ├── Article.swift              # News article model with date formatting
-│   │   ├── NewsData.swift             # Wrapper for article list and result metadata
-│   │   ├── NewsResponse.swift         # Top-level API response model
-│   │   └── Source.swift               # News source model
-│   ├── Networking/
-│   │   ├── NewsService.swift          # Protocol defining the news API contract, plus SortBy/Country/Category enums
-│   │   ├── NewsClient.swift           # URLSession-based implementation that calls the backend API
-│   │   └── MockNewsClient.swift       # Mock implementation for testing
-│   ├── ViewModels/
-│   │   ├── ContentViewModel.swift     # Root view model, factory for child view models
-│   │   ├── ArticlesViewModel.swift    # Manages article list loading state (idle/loading/loaded/error)
-│   │   └── ArticleDetailViewModel.swift # Holds a single article for the detail screen
-│   ├── UI/
-│   │   ├── ContentView.swift          # Root view listing news categories
-│   │   ├── ArticlesView.swift         # Displays a list of articles with pull-to-refresh
-│   │   ├── ArticleDetailView.swift    # Article detail screen with image, content, and full-article link
-│   │   └── SafariView.swift           # SFSafariViewController wrapper for in-app browsing
-│   ├── Resources/
-│   │   └── Localizable.strings        # Localized UI strings
-│   └── Assets.xcassets/               # App icons and colors
-├── mynewsappTests/
-│   └── mynewsappTests.swift           # Unit tests
-├── mynewsappUITests/
-│   ├── mynewsappUITests.swift         # UI tests
-│   └── mynewsappUITestsLaunchTests.swift # Launch UI tests
-├── Secrets.xcconfig.example           # Template for API key configuration
-└── mynewsapp.xcodeproj/              # Xcode project configuration
-```
+#### API (`apps/api/`)
 
 ```
-src/
-├── config/          # Configuration management
-├── controllers/     # HTTP request handlers
-├── middleware/      # Express middleware
-├── routes/          # API route definitions
-├── services/        # Business logic and external API calls
-├── types/           # TypeScript type definitions
-├── app.ts           # Express application setup
-└── index.ts         # Application entry point
+apps/api/
+├── src/
+│   ├── __tests__/
+│   │   ├── setup.ts                   # Loads test environment variables
+│   │   └── auth.test.ts               # Authentication and health endpoint tests
+│   ├── config/
+│   │   └── config.ts                  # Configuration management
+│   ├── controllers/
+│   │   └── NewsController.ts          # HTTP request handlers
+│   ├── middleware/
+│   │   ├── auth/
+│   │   │   ├── bearerAuth.ts          # Bearer token authentication logic
+│   │   │   └── index.ts               # Auth middleware barrel export
+│   │   ├── errorHandler.ts            # Global error handling middleware
+│   │   └── rateLimiter.ts             # Rate limiting middleware
+│   ├── routes/
+│   │   └── newsRoutes.ts              # API route definitions
+│   ├── services/
+│   │   └── NewsApiService.ts          # Business logic and external News API calls
+│   ├── types/
+│   │   ├── NewsApiError.ts            # Error type definitions
+│   │   ├── NewsApiResponse.ts         # API response type definitions
+│   │   ├── NewsArticle.ts             # Article type definitions
+│   │   ├── NewsQueryParams.ts         # Query parameter type definitions
+│   │   ├── NewsSource.ts              # News source type definitions
+│   │   └── index.ts                   # Types barrel export
+│   ├── app.ts                         # Express application setup
+│   └── index.ts                       # Application entry point
+├── examples/
+│   ├── api-usage.js                   # Example API usage script
+│   ├── response.json                  # Sample top-headlines response
+│   └── search_response.json           # Sample search response
+├── Dockerfile                         # Multi-stage build for production container
+├── deploy.sh                          # Automated Google Cloud Run deployment script
+├── jest.config.js                     # Jest test configuration
+├── nodemon.json                       # Nodemon hot-reload configuration
+├── tsconfig.json                      # TypeScript compiler configuration
+├── package.json                       # Dependencies and scripts
+├── .env.example                       # Environment variable template
+└── .env.test                          # Test environment variables
 ```
 
 ### Installation
@@ -379,3 +381,41 @@ https://github.com/user-attachments/assets/90abac6a-18e9-4925-b595-2fe977277d61
 - **Top Headlines**: Get the latest news headlines by country (currently defaults to US)
 
 ### Project Structure
+
+#### iOS (`apps/ios/`)
+
+```
+apps/ios/
+├── mynewsapp/
+│   ├── mynewsappApp.swift                    # App entry point, configures root view with dependencies
+│   ├── Info.plist                            # App configuration including API key reference
+│   ├── Models/
+│   │   ├── Article.swift                     # News article model
+│   │   ├── NewsData.swift                    # Wrapper for article list and result metadata
+│   │   ├── NewsResponse.swift                # Top-level API response model
+│   │   └── Source.swift                      # News source model
+│   ├── Networking/
+│   │   ├── NewsService.swift                 # Protocol defining the news API contract
+│   │   ├── NewsClient.swift                  # URLSession-based implementation
+│   │   └── MockNewsClient.swift              # Mock implementation for testing
+│   ├── ViewModels/
+│   │   ├── ContentViewModel.swift            # Root view model
+│   │   ├── ArticlesViewModel.swift           # Manages article list loading state
+│   │   └── ArticleDetailViewModel.swift      # Holds a single article for the detail screen
+│   ├── UI/
+│   │   ├── ContentView.swift                 # Root view listing news categories
+│   │   ├── ArticlesView.swift                # Displays a list of articles
+│   │   ├── ArticleDetailView.swift           # Article detail screen
+│   │   └── SafariView.swift                  # SFSafariViewController wrapper
+│   ├── Resources/
+│   │   └── Localizable.strings               # Localized UI strings
+│   └── Assets.xcassets/                      # App icons and colors
+├── mynewsappTests/
+│   └── mynewsappTests.swift                  # Unit tests
+├── mynewsappUITests/
+│   ├── mynewsappUITests.swift                # UI tests TBD
+│   └── mynewsappUITestsLaunchTests.swift     # Launch UI tests TBD
+├── Secrets.xcconfig.example                  # Template for API key configuration
+├── mynewsapp.xctestplan                      # Xcode test plan configuration
+└── mynewsapp.xcodeproj/                      # Xcode project configuration
+```
