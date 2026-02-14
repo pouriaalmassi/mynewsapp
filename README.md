@@ -372,6 +372,8 @@ TBD
 
 ## News iOS App
 
+https://github.com/user-attachments/assets/90abac6a-18e9-4925-b595-2fe977277d61
+
 ### Features
 
 - **Top Headlines**: Get the latest news headlines by country (currently defaults to US)
