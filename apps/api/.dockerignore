@@ -1,0 +1,39 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# Environment files
+.env
+.env.*
+
+# Test files
+src/__tests__
+coverage
+jest.config.js
+
+# Development files
+.git
+.gitignore
+.zed
+nodemon.json
+
+# Documentation and scripts
+README.md
+test-auth.sh
+examples
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db

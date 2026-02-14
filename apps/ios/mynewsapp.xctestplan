@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "A40F9871-0D01-49D6-B421-4A22297F9394",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:mynewsapp.xcodeproj",
+      "identifier" : "035DFDE32EE59BA600F10B82",
+      "name" : "mynewsapp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:mynewsapp.xcodeproj",
+        "identifier" : "035DFDF02EE59BA700F10B82",
+        "name" : "mynewsappTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:mynewsapp.xcodeproj",
+        "identifier" : "035DFDFA2EE59BA700F10B82",
+        "name" : "mynewsappUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

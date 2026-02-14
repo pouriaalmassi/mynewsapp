@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  mynewsapp
+*/
+
+"top_headlines" = "Top Headlines";
+"search_ai" = "Search AI";
+"ai_news" = "AI News";
+"search_bitcoin" = "Search Bitcoin";
+"bitcoin_news" = "Bitcoin News";
+"my_news_title" = "My News";
+"error_prefix" = "Error: %@";
+"retry_button" = "Retry";
+"author_prefix" = "By %@";
+"read_full_article" = "Read full article";

@@ -1,0 +1,69 @@
+
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+*.xcconfig
+
+## User settings
+xcuserdata/
+
+## Compatibility
+*.swp
+*~.nib
+
+## CocoaPods
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+#
+# Pods/
+#
+# Add this line if you want to avoid checking in source code from the Xcode workspace
+# *.xcworkspace
+
+## Build generated
+build/
+DerivedData/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Swift Package Manager
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# .build/
+
+# Packages
+#
+# We recommend against adding the Packages directory to your .gitignore.
+# However you should judge for yourself, the pros and cons are mentioned at:
+# https://github.com/apple/swift-package-manager/tree/master/Documentation/Usage.md#dependencies
+#
+# Packages/
+
+# RBEnv
+# .ruby-version
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# # https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+# fastlane/report.xml
+# fastlane/Preview.html
+# fastlane/screenshots
+# fastlane/test_output

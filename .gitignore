@@ -1,0 +1,15 @@
+# General
+SCRATCH.md
+
+# git
+.orig
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
