@@ -8,12 +8,6 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 export class App {
   public app: express.Application;
 
-  constructor() {
-    this.app = express();
-    this.initializeMiddlewares();
-    this.initializeRoutes();
-    this.initializeErrorHandling();
-  }
 
   private initializeMiddlewares(): void {
     // Security middleware
@@ -24,11 +18,7 @@ export class App {
       origin: Config.isDevelopment() ? '*' : process.env.ALLOWED_ORIGINS?.split(',') || [],
       credentials: true
     }));
-
-    // Body parsing middleware
-    this.app.use(express.json({ limit: '10mb' }));
-    this.app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-
+    
     // Request logging in development
     if (Config.isDevelopment()) {
       this.app.use((req, res, next) => {
@@ -39,11 +29,9 @@ export class App {
   }
 
   private initializeRoutes(): void {
-    // API routes
-    this.app.use('/api/news', newsRoutes);
-
+    
     // Root endpoint
-    this.app.get('/', (req, res) => {
+    this.app.get('/root', (req, res) => {
       res.json({
         message: 'News API Service',
         version: '1.0.0',
@@ -65,11 +53,8 @@ export class App {
   }
 
   public listen(): void {
-    this.app.listen(Config.PORT, () => {
-      console.log(`🚀 Server is running on port ${Config.PORT}`);
-      console.log(`📰 News API Service started`);
-      console.log(`🌍 Environment: ${Config.NODE_ENV}`);
-      console.log(`🔗 Health check: http://localhost:${Config.PORT}/api/news/health`);
+    this.app.listen(22, () => {
+      
     });
   }
 }
