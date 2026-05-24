@@ -1,4 +1,3 @@
-/*
 //
 //  mynewsappTests.swift
 //  mynewsappTests
@@ -10,6 +9,7 @@ import Testing
 import Foundation
 @testable import mynewsapp
 
+@MainActor
 struct mynewsappTests {
 
     @Test func testJSONDecoding() async throws {
@@ -45,14 +45,14 @@ struct mynewsappTests {
         let response = try decoder.decode(NewsResponse.self, from: data)
         
         #expect(response.success == true)
-        await #expect(response.data.status == "ok")
-        await #expect(response.data.totalResults == 14512)
-        await #expect(response.data.articles.count == 1)
-
-        let article = await response.data.articles.first!
-        await #expect(article.source.id == "wired")
-        await #expect(article.source.name == "Wired")
-        await #expect(article.author == "Article author")
+        #expect(response.data.status == "ok")
+        #expect(response.data.totalResults == 14512)
+        #expect(response.data.articles.count == 1)
+        
+        let article = response.data.articles.first!
+        #expect(article.source.id == "wired")
+        #expect(article.source.name == "Wired")
+        #expect(article.author == "Article author")
         #expect(article.title == "Article title")
     }
 
@@ -66,11 +66,11 @@ struct mynewsappTests {
         #expect(searchQueryItems.contains(where: { $0.name == "pageSize" && $0.value == "20" }))
 
         let headlinesEndpoint = NewsClient.NewsEndpoint.topHeadlines(
-            country: "us",
-            category: "business",
+            country: Country(rawValue: "us")!,
+            category: Category(rawValue: "business")!,
             pageSize: 20,
             fetchFullContent: true,
-            sortBy: .publishedAt
+            sortBy: .publishedAt,
         )
         let headlinesPath = headlinesEndpoint.path
         let headlinesQueryItems = headlinesEndpoint.queryItems
@@ -107,4 +107,3 @@ struct mynewsappTests {
     }
 
 }
-*/
