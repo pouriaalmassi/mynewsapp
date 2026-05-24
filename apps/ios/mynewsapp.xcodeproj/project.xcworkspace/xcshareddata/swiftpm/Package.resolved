@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pouriaalmassi/ALMExtensions",
       "state" : {
-        "revision" : "f64664a572fee6d1a520ecfaab33ec5c95ff388e",
-        "version" : "1.0.0"
+        "revision" : "d9b48c6804a5061f47f619eb6427f3c09b6110a4",
+        "version" : "1.0.5"
       }
     }
   ],

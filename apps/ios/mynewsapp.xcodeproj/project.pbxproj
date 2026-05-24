@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		039EA6602F40E5610022A108 /* ALMExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 039EA65F2F40E5610022A108 /* ALMExtensions */; };
+		03AFD0B02FC28A3E002C3568 /* ALMFoundationExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 03AFD0AF2FC28A3E002C3568 /* ALMFoundationExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				039EA6602F40E5610022A108 /* ALMExtensions in Frameworks */,
+				03AFD0B02FC28A3E002C3568 /* ALMFoundationExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +100,7 @@
 				035DFDE62EE59BA600F10B82 /* mynewsapp */,
 				035DFDF42EE59BA700F10B82 /* mynewsappTests */,
 				035DFDFE2EE59BA700F10B82 /* mynewsappUITests */,
+				03AFD0AE2FC28A3E002C3568 /* Frameworks */,
 				035DFDE52EE59BA600F10B82 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +113,13 @@
 				035DFDFB2EE59BA700F10B82 /* mynewsappUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		03AFD0AE2FC28A3E002C3568 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +144,7 @@
 			packageProductDependencies = (
 				032977D72EEE6899007E3C54 /* PAExtensions */,
 				039EA65F2F40E5610022A108 /* ALMExtensions */,
+				03AFD0AF2FC28A3E002C3568 /* ALMFoundationExtensions */,
 			);
 			productName = mynewsapp;
 			productReference = 035DFDE42EE59BA600F10B82 /* mynewsapp.app */;
@@ -608,7 +617,7 @@
 			repositoryURL = "https://github.com/pouriaalmassi/ALMExtensions";
 			requirement = {
 				kind = exactVersion;
-				version = 1.0.0;
+				version = 1.0.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -622,6 +631,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 039EA65E2F40E5610022A108 /* XCRemoteSwiftPackageReference "ALMExtensions" */;
 			productName = ALMExtensions;
+		};
+		03AFD0AF2FC28A3E002C3568 /* ALMFoundationExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 039EA65E2F40E5610022A108 /* XCRemoteSwiftPackageReference "ALMExtensions" */;
+			productName = ALMFoundationExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

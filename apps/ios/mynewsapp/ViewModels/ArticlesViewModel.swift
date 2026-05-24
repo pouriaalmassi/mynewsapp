@@ -22,12 +22,14 @@ final class ArticlesViewModel {
     
     func loadData() async {
         dataState = .loading
+        AppLogger.viewModels.debug("Loading articles from server...")
         do {
             let articles = try await fetchAction()
             dataState = .loaded(articles)
+            AppLogger.viewModels.info("Successfully fetched \(articles.count) articles")
         } catch {
             dataState = .error(error)
-            print("Error fetching articles: \(error)")
+            AppLogger.viewModels.error(public: "Failed to fetch articles", private: error.localizedDescription)
         }
     }
 }

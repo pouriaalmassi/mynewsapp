@@ -1,4 +1,5 @@
 import Foundation
+import ALMFoundationExtensions
 
 final class NewsClient: NewsService {
     
@@ -80,12 +81,14 @@ final class NewsClient: NewsService {
         let constructedUrlString = Constant.baseURL + endpoint.path
         
         guard var components = URLComponents(string: constructedUrlString) else {
+            AppLogger.network.error("Invalid URL components for constructed URL: \(constructedUrlString)")
             throw URLError(.badURL)
         }
         
         components.queryItems = endpoint.queryItems
         
         guard let url = components.url else {
+            AppLogger.network.error("Could not construct URL from components")
             throw URLError(.badURL)
         }
         
@@ -96,17 +99,33 @@ final class NewsClient: NewsService {
         )
         
         guard let apiKey = Constant.apiKey else {
+            AppLogger.network.error("API Key not found in Info.plist")
             throw URLError(.userAuthenticationRequired)
         }
         
         urlRequest.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         
-        let (data, _) = try await session.data(for: urlRequest)
+        AppLogger.network.info("Request cURL:\n\(urlRequest.cURLDescription)")
         
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
-        return try decoder.decode(NewsResponse.self, from: data)
+        do {
+            let (data, response) = try await session.data(for: urlRequest)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                AppLogger.network.info("HTTP Status Code: \(httpResponse.statusCode) | Bytes: \(data.count)")
+            } else {
+                AppLogger.network.info("Received \(data.count) bytes")
+            }
+            
+            AppLogger.network.info("Response JSON:\n\(data.rawJSONString)")
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
+            return try decoder.decode(NewsResponse.self, from: data)
+        } catch {
+            AppLogger.network.error(public: "API request failed for endpoint \(endpoint.path)", private: error.localizedDescription)
+            throw error
+        }
     }
 }
 

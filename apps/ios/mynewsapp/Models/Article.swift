@@ -1,6 +1,6 @@
 import Foundation
 
-import ALMExtensions
+import ALMFoundationExtensions
 
 struct Article: Codable, Identifiable {
     let id = UUID()
