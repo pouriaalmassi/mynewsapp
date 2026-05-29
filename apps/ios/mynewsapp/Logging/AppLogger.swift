@@ -22,11 +22,16 @@ public struct AppLogger: Sendable {
     
     /// Single top-level toggle that dynamically controls if logs are outputted or muted
     public static let isLoggingEnabled: Bool = {
+        #if DEBUG
         if let env = ProcessInfo.processInfo.environment["LOGGING_ENABLED"] {
             return env.lowercased() == "true" || env == "1"
         }
-        // Default to true (logging enabled) unless explicitly disabled
+        // Default to true (logging enabled) unless explicitly disabled in debug
         return true
+        #else
+        // Logging is strictly disabled in Release builds
+        return false
+        #endif
     }()
     
     private let logger: Logger
@@ -39,11 +44,13 @@ public struct AppLogger: Sendable {
     
     // MARK: - Standard Logging APIs
     
+    /*
     /// Logs a debug message. Useful for low-level diagnostic logs that are only needed during active development.
     public func debug(_ message: String) {
         guard Self.isLoggingEnabled else { return }
         logger.debug("\(message, privacy: .public)")
     }
+     */
     
     /// Logs an informational message. Useful for tracking high-level execution flows and major milestones.
     public func info(_ message: String) {
@@ -51,11 +58,13 @@ public struct AppLogger: Sendable {
         logger.info("\(message, privacy: .public)")
     }
     
+    /*
     /// Logs a standard notice/default message.
     public func log(_ message: String) {
         guard Self.isLoggingEnabled else { return }
         logger.log("\(message, privacy: .public)")
     }
+    */
     
     /// Logs an error message. Highlight issues that are recoverable but require developer attention.
     public func error(_ message: String) {
@@ -69,6 +78,7 @@ public struct AppLogger: Sendable {
         logger.fault("\(message, privacy: .public)")
     }
     
+    /*
     // MARK: - Safe Production Logging APIs
     
     /// Logs a debug message with explicit public description and redacted private information.
@@ -88,6 +98,7 @@ public struct AppLogger: Sendable {
         guard Self.isLoggingEnabled else { return }
         logger.error("\(message, privacy: .public) | [Private: \(sensitive, privacy: .private)]")
     }
+     */
 }
 
 // MARK: - Convenience Static Accessors

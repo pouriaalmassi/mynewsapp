@@ -123,7 +123,7 @@ final class NewsClient: NewsService {
             
             return try decoder.decode(NewsResponse.self, from: data)
         } catch {
-            AppLogger.network.error(public: "API request failed for endpoint \(endpoint.path)", private: error.localizedDescription)
+            AppLogger.network.error("API request failed for endpoint \(endpoint.path), localizedDescription: \(error.localizedDescription)")
             throw error
         }
     }
