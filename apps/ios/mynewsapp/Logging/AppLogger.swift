@@ -13,7 +13,7 @@ import os
 public struct AppLogger: Sendable {
     
     /// Categories of logs to help filter logs inside Console.app and Xcode console
-    public enum Category: String {
+    public enum Category: String, CaseIterable {
         case general = "General"
         case network = "Network"
         case ui = "UI"
@@ -34,10 +34,12 @@ public struct AppLogger: Sendable {
         #endif
     }()
     
+    public let category: Category
     private let logger: Logger
     
     /// Initializes an AppLogger instance with a specific category
     public init(category: Category = .general) {
+        self.category = category
         let subsystem = Bundle.main.bundleIdentifier ?? "com.pouriaalmassi.mynewsapp"
         self.logger = Logger(subsystem: subsystem, category: category.rawValue)
     }
@@ -56,6 +58,7 @@ public struct AppLogger: Sendable {
     public func info(_ message: String) {
         guard Self.isLoggingEnabled else { return }
         logger.info("\(message, privacy: .public)")
+        LogStore.shared.append(LogEntry(category: self.category, level: .info, message: message))
     }
     
     /*
@@ -70,12 +73,14 @@ public struct AppLogger: Sendable {
     public func error(_ message: String) {
         guard Self.isLoggingEnabled else { return }
         logger.error("\(message, privacy: .public)")
+        LogStore.shared.append(LogEntry(category: self.category, level: .error, message: message))
     }
     
     /// Logs a critical fault message. Highlights non-recoverable system crashes or major bugs.
     public func fault(_ message: String) {
         guard Self.isLoggingEnabled else { return }
         logger.fault("\(message, privacy: .public)")
+        LogStore.shared.append(LogEntry(category: self.category, level: .fault, message: message))
     }
     
     /*
