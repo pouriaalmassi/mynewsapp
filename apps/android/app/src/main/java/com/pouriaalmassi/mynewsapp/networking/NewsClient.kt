@@ -2,6 +2,7 @@ package com.pouriaalmassi.mynewsapp.networking
 
 import android.util.Log
 import com.google.gson.*
+import com.pouriaalmassi.mynewsapp.BuildConfig
 import com.pouriaalmassi.mynewsapp.models.Article
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,12 +15,20 @@ import java.util.*
 
 class NewsClient(
     private val baseUrl: String = "http://10.0.2.2:3000/api/news/",
-    private val apiKey: String = "474d4e4699444b8f84c3918deda22e2a"
+    private val apiKey: String = BuildConfig.API_KEY
 ) : NewsService {
 
     private val retrofitService: RetrofitNewsService
 
     init {
+        if (apiKey.isEmpty()) {
+            Log.e("NewsClient", "=======================================================================")
+            Log.e("NewsClient", "FATAL RUNTIME ERROR: API_KEY is empty!")
+            Log.e("NewsClient", "Ensure local.properties contains API_KEY=<key> before building the app.")
+            Log.e("NewsClient", "=======================================================================")
+            error("API_KEY is empty. The application cannot make authenticated network calls.")
+        }
+
         // Logging Interceptor
         val loggingInterceptor = HttpLoggingInterceptor { message ->
             Log.d("NewsClient", message)

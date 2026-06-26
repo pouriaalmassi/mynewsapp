@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +8,25 @@ plugins {
 android {
     namespace = "com.pouriaalmassi.mynewsapp"
     compileSdk = 34
+
+    // Gotcha: We use an explicit import for java.util.Properties above instead of writing `java.util.Properties()`.
+    // In Gradle Kotlin DSL (.kts), `java` is a built-in property referring to the JavaPluginExtension. 
+    // Writing `java.util.Properties()` makes Gradle search for a `util` property on the `java` extension,
+    // causing an "Unresolved reference: util" error.
+    val properties = Properties()
+    val localPropertiesFile = project.rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        properties.load(localPropertiesFile.inputStream())
+    }
+    val apiKey = properties.getProperty("API_KEY")
+    if (apiKey.isNullOrEmpty()) {
+        throw GradleException(
+            "\n\n========================================================================\n" +
+            "FATAL ERROR: 'API_KEY' is missing or empty in local.properties.\n" +
+            "Please add 'API_KEY=your_key_here' to your local.properties file.\n" +
+            "========================================================================\n"
+        )
+    }
 
     defaultConfig {
         applicationId = "com.pouriaalmassi.mynewsapp"
@@ -18,6 +39,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {
@@ -38,6 +60,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.8"

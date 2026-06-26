@@ -2,27 +2,27 @@ package com.pouriaalmassi.mynewsapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Premium Dark & Light Indigo Theme Colors
+// Premium Blue (Light) & Crimson Red (Dark) Theme Colors
 
-// Dark Palette
-val DarkBg = Color(0xFF0F111A)         // Deep dark slate blue
-val DarkSurface = Color(0xFF161A26)    // Secondary panel slate
-val DarkPrimary = Color(0xFF6366F1)    // Vibrant indigo
-val DarkSecondary = Color(0xFF818CF8)  // Medium indigo/lavender
+// Dark Palette (Red Theme)
+val DarkBg = Color(0xFF0F0B0B)         // Deep charcoal with warm red undertone
+val DarkSurface = Color(0xFF181212)    // Dark ruby-tinted slate
+val DarkPrimary = Color(0xFFEF4444)    // Vibrant cherry/crimson red
+val DarkSecondary = Color(0xFFF87171)  // Soft warm rose red
 val DarkTertiary = Color(0xFFF59E0B)   // Neon amber/gold accent
-val DarkTextPrimary = Color(0xFFF3F4F6)// High contrast off-white
-val DarkTextSecondary = Color(0xFF9CA3AF) // Cool gray
+val DarkTextPrimary = Color(0xFFFEE2E2)// Warm high-contrast off-white
+val DarkTextSecondary = Color(0xFF9CA3AF) // Cool neutral gray
 
-// Light Palette
-val LightBg = Color(0xFFF9FAFB)        // Very soft white/gray
+// Light Palette (Blue Theme)
+val LightBg = Color(0xFFF0F4F8)        // Soft sky-tinted white
 val LightSurface = Color(0xFFFFFFFF)   // Clean white
-val LightPrimary = Color(0xFF4F46E5)   // Deep royal indigo
-val LightSecondary = Color(0xFF6366F1) // Indigo
-val LightTertiary = Color(0xFFD97706)  // Warm amber
-val LightTextPrimary = Color(0xFF111827)// Charcoal black
-val LightTextSecondary = Color(0xFF4B5563) // Mid-tone slate gray
+val LightPrimary = Color(0xFF1D4ED8)   // Vibrant royal blue
+val LightSecondary = Color(0xFF3B82F6) // Dodger blue
+val LightTertiary = Color(0xFF0D9488)  // Clean teal/cyan
+val LightTextPrimary = Color(0xFF0F172A)// Charcoal black with navy slate
+val LightTextSecondary = Color(0xFF475569) // Muted slate gray
 
-// Accent gradient colors
-val GradientStart = Color(0xFF4F46E5)
-val GradientEnd = Color(0xFFEC4899)
-val GlassBg = Color(0x33161A26)
+// Accent gradient colors (Blue to Red)
+val GradientStart = Color(0xFF2563EB)  // Vibrant royal blue
+val GradientEnd = Color(0xFFEF4444)    // Vibrant crimson red
+val GlassBg = Color(0x33181212)
