@@ -142,8 +142,6 @@
 			);
 			name = mynewsapp;
 			packageProductDependencies = (
-				032977D72EEE6899007E3C54 /* PAExtensions */,
-				039EA65F2F40E5610022A108 /* ALMExtensions */,
 				03AFD0AF2FC28A3E002C3568 /* ALMFoundationExtensions */,
 			);
 			productName = mynewsapp;
@@ -623,15 +621,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		032977D72EEE6899007E3C54 /* PAExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PAExtensions;
-		};
-		039EA65F2F40E5610022A108 /* ALMExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 039EA65E2F40E5610022A108 /* XCRemoteSwiftPackageReference "ALMExtensions" */;
-			productName = ALMExtensions;
-		};
 		03AFD0AF2FC28A3E002C3568 /* ALMFoundationExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 039EA65E2F40E5610022A108 /* XCRemoteSwiftPackageReference "ALMExtensions" */;
