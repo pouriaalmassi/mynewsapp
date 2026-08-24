@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.MyNewsApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here using inline hex colors -->
+        <item name="colorPrimary">#1D4ED8</item>
+        <item name="colorPrimaryDark">#172554</item>
+        <item name="colorAccent">#3B82F6</item>
+    </style>
+</resources>

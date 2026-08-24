@@ -1,0 +1,28 @@
+# Gradle and Build Outputs
+.gradle/
+build/
+app/build/
+
+# Local configuration files (contains local SDK paths, keys, etc.)
+local.properties
+
+# Signing credentials & keystore keys
+*.jks
+*.keystore
+*.pk8
+*.pem
+
+# IDEs and Editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
+ndkBuild/
+
+# OS specific files
+.DS_Store
+Thumbs.db

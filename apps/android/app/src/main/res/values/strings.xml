@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My News</string>
+    <string name="my_news_title">My News</string>
+    <string name="error_prefix">Error: %1$s</string>
+    <string name="retry_button">Retry</string>
+    <string name="author_prefix">By %1$s</string>
+    <string name="read_full_article">Read full article</string>
+    
+    <string name="category_general">General</string>
+    <string name="category_business">Business</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_health">Health</string>
+    <string name="category_science">Science</string>
+    <string name="category_sports">Sports</string>
+    <string name="category_technology">Technology</string>
+</resources>
